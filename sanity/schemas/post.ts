@@ -20,6 +20,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      to: {type: 'author'},
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
