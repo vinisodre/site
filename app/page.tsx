@@ -1,28 +1,24 @@
+import BlogCard from "@/components/BlogCard";
+import CategoryList from "@/components/CategoryList";
 import Featured from "@/components/Featured";
-import { client } from "@/sanity/lib/client";
+import SideMenu from "@/components/SideMenu";
 
-async function getData() {
-  const query = `
-  *[_type == "post"] | order(_createdAt desc) {
-    title, 
-      "currentSlug": slug.current,
-      body,
-      preview
-  }
-  `;
 
-  const data = await client.fetch(query);
 
-  return data;
-}
 
 export default async function Home() {
-  const data = await getData();
-
-  // console.log('teste ----->', data);
   return (
     <div>
       <Featured />
+      <CategoryList />
+      <div className="flex">
+        <div className="w-3/4">
+          <BlogCard />
+        </div>
+        <div className="w-1/4">
+          <SideMenu />
+        </div>
+      </div>
     </div>
   );
 }

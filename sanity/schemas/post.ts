@@ -62,6 +62,19 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'blockContent',
+    }),
+    {
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [
+        { type: "block" }
+      ]
+    }
   ],
 
   preview: {
@@ -69,6 +82,8 @@ export default defineType({
       title: 'title',
       author: 'author.name',
       media: 'mainImage',
+      excerpt: 'excerpt',
+      
     },
     prepare(selection) {
       const {author} = selection
