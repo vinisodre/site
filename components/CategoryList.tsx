@@ -24,8 +24,7 @@ export default async function CategoryList() {
   
     return (
       <div className="my-4">
-        <h1 className="">Categorias</h1>
-        <div className="flex gap-4">
+        <div className="flex gap-4 bg-white text-black p-4 rounded-xl">
           {data.map((item) => (
             <Link href={`/${item.slug}`} key={item.id}>
               <div className="flex bg-primary px-4 py-2 align-middle gap-2 rounded text-black">
@@ -38,3 +37,5 @@ export default async function CategoryList() {
       </div>
     );
   }
+
+  // todo: implementar como componente botão ui

@@ -31,19 +31,19 @@ async function getData() {
     console.log('Data:', data); // Add console.log statement for data
 
     return (
-        <div className='flex flex-col bg-pink-400'>
+        <div className='flex flex-col bg-white text-black p-4 rounded-xl'>
             {data.map((item) => (
                 console.log('Item:', item), // Add console.log statement for item
-                <div className='flex bg-green-800 gap-8' key={item.currentSlug}>
+                <div className='flex mb-2 gap-4' key={item.currentSlug}>
                     <div className='w-1/2'>
-                        <Image src={item.image} alt={item.title} width={500} height={500} />
+                        <Image src={item.image} alt={item.title} width={500} height={500} className='rounded-xl shadow-lg'/>
                     </div>
-                    <div className='w-1/2'>
-                        <div className='flex-col'>
-                            <h1>{item.title}</h1>
+                    <div className='w-1/2 flex flex-col justify-between'>
+    
+                            <h1 className='text-xl font-bold mt-2'>{item.title}</h1>
                             <PortableText value={item.excerpt} />
-                            <Button>Ler mais</Button>
-                        </div>
+                            <Button size={"sm"} className="w-fit mt-4 shadow-lg mb-2">Ler mais</Button>
+                        
                     </div>
                 </div>
             ))}

@@ -13,8 +13,7 @@ async function getData() {
     title,
     "image": mainImage.asset->url,
     "slug": slug.current,
-    excerpt,
-    content
+    excerpt
   }
   `;
 
@@ -29,23 +28,22 @@ async function getData() {
 
 export default async function Featured() {
   const data = await getData();
-  console.log('Data:', data);
+  console.log('Data novo ====>:', data);
   return (
     <div>
-      <h1 className="text-8xl">
-        <b>Vinicius Sodré</b>
+      <h1 className="text-8xl mt-8 mb-4 font-bold">
+        Vinicius Sodré
       </h1>
 {data.map((data) => {
-        console.log('data:', data);
         return (
-          <div className="flex align-middle" key={data.slug}>
-            <div>
-              <Image src={data.image} alt={data.title} width={500} height={500} />
+          <div className="flex align-middle bg-white text-black p-4 rounded-xl" key={data._id}>
+            <div className="flex w-1/2">
+              <Image src={data.image} alt={data.title} width={1000} height={1000} className="rounded-xl shadow-lg" />
             </div>
-            <div className="flex flex-col">
-              <h2 className="text-4xl">{data.title}</h2>
+            <div className="flex flex-col justify-between w-1/2 px-4">
+              <h2 className="text-4xl font-bold ">{data.title}</h2>
               <PortableText value={data.excerpt} />
-              <Button size={"sm"} className="w-fit">
+              <Button size={"sm"} className="w-fit mt-4 shadow-lg">
                 <Link href={`/${data.slug}`}>Saiba mais</Link>
               </Button>
             </div>
