@@ -17,10 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className=" max-w-screen-xl mx-auto bg-slate-800
+      <body className=" max-w-screen-xl mx-auto bg-black
        text-slate-50">
         <div className="px-4  py-4">
         <Navbar />
+        <h1 className="text-8xl mt-8 mb-4 font-bold">Vinicius Sodré</h1>
         {children}
         </div>
         
