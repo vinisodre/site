@@ -1,33 +1,26 @@
-import { client } from "@/sanity/lib/client";
+"use client"
 
-async function getData() {
-  const query = `
-  *[_type == "post"] | order(_createdAt desc) {
-    title, 
-      "currentSlug": slug.current,
-      body,
-      preview
-  }
-  `;
+import BlogCard from "@/components/BlogCard";
+import CategoryList from "@/components/CategoryList";
+import Featured from "@/components/Featured";
+import SideMenu from "@/components/SideMenu";
 
-  const data = await client.fetch(query);
 
-  return data;
-}
 
-export default async function Home() {
-  const data = await getData();
 
-  console.log('teste ----->', data);
+export default function Home() {
   return (
     <div>
-      <h1>Hello, Next.js!</h1>
-      {data.map((post) => (
-        <div key={post.currentSlug}>
-          <h2>{post.title}</h2>
-          <p>{post.preview}</p>
+      <Featured />
+      <CategoryList />
+      <div className="flex gap-4">
+        <div className="w-3/4">
+          <BlogCard />
         </div>
-      ))}
+        <div className="w-1/4">
+          <SideMenu />
+        </div>
+      </div>
     </div>
   );
 }
