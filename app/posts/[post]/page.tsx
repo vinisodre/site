@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import React from "react";
 
-async function getData(slug: string) {
+async function getData(slug: string): Promise<Post> {
   const query = `
   *[_type == "post" && slug.current == '${slug}']
   {
@@ -18,7 +18,7 @@ async function getData(slug: string) {
   }[0]
   `;
 
-  const data = await client.fetch(query);
+  const data: Post = await client.fetch(query);
   return data;
 }
 
@@ -26,21 +26,25 @@ type Post = {
   _createdAt: string;
   title: string;
   author: string;
-  categories: string[];
-  image: any;
+  categories: { title: string }[];
+  image: string;
   slug: string;
   content: any;
 };
 
-export default async function Post({ params }: { params: { post: string } }) {
+export default async function Post({
+  params,
+}: {
+  params: { post: string };
+}): Promise<JSX.Element> {
   const data: Post = await getData(params.post);
 
   return (
     <div>
       <h1>{data.title}</h1>
       <p>{data._createdAt}</p>
-      {data.categories.map((category) => (
-        <p key={category._id}>{category.title}</p>
+      {data.categories.map((category: { title: string }, index) => (
+        <p key={index}>{category.title}</p>
       ))}
       <Image src={data.image} alt={data.title} width={500} height={500} />
 
