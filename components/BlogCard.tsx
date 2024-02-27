@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Button } from './ui/button';
 import {PortableText} from '@portabletext/react';
 import { RichTextComponents } from "./RichTextComponents";
+import Link from 'next/link';
 
 async function getData() {
     const query = `
@@ -34,7 +35,9 @@ async function getData() {
             {data.map((item) => (
                 <div className='flex mb-2 gap-4' key={item._id}>
                     <div className='w-1/2'>
+                    <Link href={`/posts/${item.slug}`}>
                         <Image src={item.image} alt={item.title} width={500} height={500} className='rounded-xl shadow-lg'/>
+                    </Link>
                     </div>
                     <div className='w-1/2 flex flex-col justify-between'>
     
@@ -43,11 +46,12 @@ async function getData() {
                                 value={item.excerpt}
                                 components={RichTextComponents}
                              />
-                            <Button size={"sm"} className="w-fit mt-4 shadow-lg mb-2">Ler mais</Button>
-                        
+                            <Button size={"sm"} className="w-fit mt-4 shadow-lg mb-2"><Link href={`/posts/${item.slug}`}>Ler mais</Link></Button>
                     </div>
                 </div>
             ))}
         </div>
     )
 }
+
+//TODO: corrigir a implementação do link no lugar de button

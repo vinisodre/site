@@ -37,6 +37,7 @@ const components: { title: string; href: string; description: string }[] = [
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   },
 ];
+//todo: os 3 menus podem vir das categorias. posso criar um atributo como destauque no schema delas e assim elas aparecerem ali
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -45,7 +46,7 @@ export default function NavBar() {
     <nav className="flex justify-between align-middle">
       <span className="flex flex-col justify-center">
         {pathname !== "/" && (
-          <Link href="/">
+           <Link href="/">
             <Button className="text-white" variant="link">
               <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /> voltar
             </Button>

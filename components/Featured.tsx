@@ -34,7 +34,7 @@ export default async function Featured() {
                 components={RichTextComponents}
                 />
               <Button size={"sm"} className="w-fit mt-4 shadow-lg">
-                <Link href={`/${item.slug}`}>Saiba mais</Link>
+                <Link href={`/posts/${item.slug}`}>Saiba mais</Link>
               </Button>
             </div>
           </div>
