@@ -20,6 +20,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      to: {type: 'author'},
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
@@ -52,10 +58,18 @@ export default defineType({
       type: 'datetime',
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'excerpt',
+      title: 'Excerpt',
       type: 'blockContent',
     }),
+    {
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [
+        { type: "block" }
+      ]
+    }
   ],
 
   preview: {
@@ -63,6 +77,8 @@ export default defineType({
       title: 'title',
       author: 'author.name',
       media: 'mainImage',
+      excerpt: 'excerpt',
+      
     },
     prepare(selection) {
       const {author} = selection
