@@ -9,6 +9,9 @@ import linkedin from '../public/linkedin.svg'
 import github from '../public/github.svg'
 import teste from '../public/teste.png'
 
+import { Category } from '@/types/Category';
+
+
 export default async function SideMenu() {
   const categories = await getCategories();
 
@@ -29,7 +32,7 @@ export default async function SideMenu() {
       <h3 className='text-xl font-bold mb-8'>Alguns destaques</h3>
       <div className='flex flex-wrap gap-2'>
 
-        {categories.map((item) => (
+        {categories.map((item: Category) => (
           <Button key={item._id} size={"sm"} className="shadow-lg">{item.title}</Button>
         ))}
       </div>
