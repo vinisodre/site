@@ -7,6 +7,8 @@ import {PortableText} from '@portabletext/react';
 import { RichTextComponents } from "./RichTextComponents";
 import Link from 'next/link';
 
+import { Post } from '@/types/Post';
+
 async function getData() {
     const query = `
     *[_type == "post"] | order(_createdAt desc)
@@ -25,6 +27,7 @@ async function getData() {
     return data;
   }
   
+ 
 
   export default async function BlogCard() {
     const data = await getData();
@@ -32,7 +35,7 @@ async function getData() {
 
     return (
         <div className='flex flex-col bg-white text-black p-4 rounded-xl'>
-            {data.map((item) => (
+            {data.map((item: Post) => (
                 <div className='flex mb-2 gap-4' key={item._id}>
                     <div className='w-1/2'>
                     <Link href={`/posts/${item.slug}`}>

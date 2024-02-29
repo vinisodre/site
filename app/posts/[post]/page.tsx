@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import React from "react";
 
-async function getData(slug: string): Promise<Post> {
+async function getData(slug: string) {
   const query = `
   *[_type == "post" && slug.current == '${slug}']
   {
@@ -18,7 +18,7 @@ async function getData(slug: string): Promise<Post> {
   }[0]
   `;
 
-  const data: Post = await client.fetch(query);
+  const data = await client.fetch(query);
   return data;
 }
 
@@ -32,11 +32,7 @@ type Post = {
   content: any;
 };
 
-export default async function Post({
-  params,
-}: {
-  params: { post: string };
-}): Promise<JSX.Element> {
+export default async function Post({ params }: { params: { post: string } }) {
   const data: Post = await getData(params.post);
 
   return (
