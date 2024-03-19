@@ -45,13 +45,7 @@ export default function NavBar() {
   return (
     <nav className="flex justify-between align-middle">
       <span className="flex flex-col justify-center">
-        {pathname !== "/" && (
-           <Link href="/">
-            <Button className="text-white" variant="link">
-              <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" /> voltar
-            </Button>
-          </Link>
-        )}
+        {pathname !== "/" && <Link href="/">voltar</Link>}
       </span>
       <nav className="flex justify-end py-8">
         <NavigationMenu>
@@ -61,7 +55,7 @@ export default function NavBar() {
                 Comece por aqui
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[450px] lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
                       <a
@@ -95,7 +89,7 @@ export default function NavBar() {
                 Blog / Textos
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[450px] md:grid-cols-2 lg:w-[450px] ">
                   {components.map((component) => (
                     <ListItem
                       key={component.title}

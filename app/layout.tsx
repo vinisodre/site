@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { usePathname } from "next/navigation";
+import Footer from "@/components/Footer";
 
 // export const metadata: Metadata = {
 //     title: "Create Next App",
@@ -36,10 +37,11 @@ export default function RootLayout({
           <div className="px-4  py-4">
             <Navbar />
             <Link href="/">
-              <h1 className="text-8xl mt-8 mb-4 font-bold">Vinicius Sodré</h1>
+              <h1 className="text-6xl p-4 lg:text-8xl mt-8 mb-4 font-bold">Vinicius Sodré</h1>
             </Link>
             {children}
             <SpeedInsights />
+            <Footer />
           </div>
         </body>
       )}
