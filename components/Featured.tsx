@@ -15,10 +15,10 @@ export default async function Featured() {
       {data.map((item: any) => {
         return (
           <div
-            className="flex align-middle bg-white text-black p-4 rounded-xl"
+            className="flex flex-col p-4 rounded-xl lg:flex lg:flex-row lg:align-middle gap-4"
             key={item._id}
           >
-            <div className="flex w-1/2">
+            <div className="flex lg:w-1/2">
               <Image
                 src={item.image}
                 alt={item.title}
@@ -27,8 +27,8 @@ export default async function Featured() {
                 className="rounded-xl shadow-lg"
               />
             </div>
-            <div className="flex flex-col justify-between w-1/2 px-4">
-              <h2 className="text-4xl font-bold ">{item.title}</h2>
+            <div className="flex flex-col justify-between w-full lg:w-1/2 ">
+              <h2 className="my-4 text-xl lg:text-4xl font-bold ">{item.title}</h2>
               <PortableText 
                 value={item.excerpt}
                 components={RichTextComponents}

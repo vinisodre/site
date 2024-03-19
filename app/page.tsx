@@ -13,11 +13,11 @@ export default function Home() {
     <div>
       <Featured />
       <CategoryList />
-      <div className="flex gap-4">
-        <div className="w-3/4">
+      <div className="flex flex-col lg:flex-row gap-4">
+        <div className="flex-1 lg:flex-auto lg:w-3/4">
           <BlogCard />
         </div>
-        <div className="w-1/4">
+        <div className="flex-1 lg:flex-auto lg:w-1/4">
           <SideMenu />
         </div>
       </div>
